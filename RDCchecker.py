@@ -111,10 +111,10 @@ class import_rdc(bpy.types.Operator):
             if bpy.context.selected_objects:
                     purge_data(self, context)          
                     #save file with 3D
-                    bpy.ops.wm.save_as_mainfile(filepath = os.path.join(bpy.context.scene.has3D+'\\'+capture_string+'.blend'));                    
+                    bpy.ops.wm.save_as_mainfile(filepath = os.path.join(bpy.context.scene.has3D+'\\'+capture_string.lstrip("capture_")+'.blend'));                    
                     #Take screenshot
                     screenshot_condition(self, context)
-                    bpy.context.scene.render.filepath = os.path.join(bpy.context.scene.has3D+'\\'+capture_string);
+                    bpy.context.scene.render.filepath = os.path.join(bpy.context.scene.has3D+'\\'+capture_string.lstrip("capture_"));
                     bpy.ops.render.opengl(animation=False, render_keyed_only=False, sequencer=False, write_still=True, view_context=True);
                     #Delete and purge
                     bpy.ops.object.select_all(action='SELECT')
